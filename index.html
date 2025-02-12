@@ -7,19 +7,25 @@
     <link rel="stylesheet" type="text/css" href="styles.css" /> 
 </head>
 <body class="everything">
-    <div class="titles_main">
-        <span class="border">
-            <h1>Welcome to the random message website!</h1>
-            <h3>On this website, you can send messages, and the flux of messages is shown live. Every day,
-                a random message is featured. Features, such as liking comments, will be added later.
-            </h3>
-        </span>
-    </div>
+    <div class="stuff">
+        <div class="titles_main">
+            <span class="border">
+                <h1>Welcome to the random message website!</h1>
+                <h3>Type something!
+                </h3>
+            </span>
+        </div>
 
-    <p class="clickables">
-        <input type="text" placeholder="Enter text here" id="textBox">
-        <button id="mainButton"> Click me! </button>
-    </p>
+        <div class="clickables">
+            <input type="text" placeholder="Enter text here" id="textBox">
+            <button id="mainButton"> Click me! </button>
+        </div>
+
+
+        <div class="commentsContainer">
+            <ul id="displayArea"> </ul>
+        </div>
+    </div>
 
     <script src="button_clicked.js"></script>
 </body>
