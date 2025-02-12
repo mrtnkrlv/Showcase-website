@@ -21,6 +21,7 @@
     box-sizing: border-box;
 }
 
+/* Allow things to be stacked vertically (cleans up code) */
 .stuff {
     display: flex; /* Enable Flexbox */
     flex-direction: column; /* Stack items vertically */

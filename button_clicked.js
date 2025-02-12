@@ -1,31 +1,62 @@
 let messageBoard = JSON.parse(localStorage.getItem("messageBoard")) || [];
 
+document.getElementById("clearButton").addEventListener("click", function() {
+    localStorage.clear(); 
+    messageBoard = []; 
+    displayItems(); 
+})
+
+
+// THIS IS SUPER UGLY!! FIX!!
+// works though
+
+const textbox = document.getElementById('textBox');
+
+textbox.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent default Enter key behavior
+        sendMessage(); // Call the function to send the message
+    }
+});
+
+function sendMessage() {
+    let store = textbox.value.trim();
+    if (store) {
+        let timestamp = new Date().toLocaleTimeString();
+        let messageObject = {
+            text: store,
+            time: timestamp
+        };
+        messageBoard.push(messageObject);
+        localStorage.setItem('messageBoard', JSON.stringify(messageBoard));
+        displayItems();
+        textbox.value = ''; // Clear the textbox after sending
+    }
+}
+
 document.getElementById("mainButton").addEventListener("click", function() {
-    alert("Button clicked!")
-    store = document.getElementById("textBox").value;
+    let store = document.getElementById("textBox").value.trim();
     document.getElementById("textBox").value = "";
 
-    if (store){
-        messageDiv = document.createElement("div");
-        messageDiv.textContent = store;
-
-        displayArea.appendChild(messageDiv);
-
-        messageBoard.push(store);
-        localStorage.setItem('items', JSON.stringify(items));
-    }
-});
-
-
-window.addEventListener('load', function() {
-    const store = document.getElementById("textBox").value;
     if (store) {
-        const messages = JSON.parse(localStorage.getItem('messages') || '[]');
-        messages.push(store);
-        localStorage.setItem('messages', JSON.stringify(messages));
-        displayMessages();
-        userInput.value = '';
+        let timestamp = new Date().toLocaleTimeString(); 
+        let messageObject = {
+            text: store,
+            time: timestamp
+        };
+
+        messageBoard.push(messageObject);
+        localStorage.setItem('messageBoard', JSON.stringify(messageBoard));
+        displayItems();
     }
 });
 
+function displayItems() {
+    const displayArea = document.getElementById('displayArea');
+    displayArea.innerHTML = messageBoard.map(item => 
+        `<p>New message (${item.time}): ${item.text}</p>`
+    ).join('');
+}
+
+window.addEventListener('load', displayItems);
 
