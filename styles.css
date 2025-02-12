@@ -1,0 +1,23 @@
+.everything {
+    background-color: goldenrod;
+}
+
+.titles_main {
+    text-align: center;
+}
+
+.border {
+    display: inline-block; 
+    border: 2px solid black; 
+    padding: 5px; 
+    background-color: aquamarine;
+    box-sizing: border-box;
+}
+
+.clickables {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 2px;
+    box-sizing: border-box;
+    position: absolute;
+}
